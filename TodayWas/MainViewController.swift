@@ -7,13 +7,28 @@
 //
 
 import UIKit
+import Firebase
 
 class MainViewController: UIViewController, UINavigationControllerDelegate {
 
+    @IBOutlet weak var logOutButton: UIButton!
+    @IBAction func logOutUser(_ sender: Any) {
+        try! Auth.auth().signOut()
+        
+        self.performSegue(withIdentifier: "returnToLogin", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        if Auth.auth().currentUser == nil{
+//            self.performSegue(withIdentifier: "return", sender: self)
+//        }
     }
 
     override func didReceiveMemoryWarning() {

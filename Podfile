@@ -8,6 +8,9 @@ target 'TodayWas' do
   # Pods for TodayWas
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'Firebase/Functions'
+pod 'Firebase/Messaging'
 
 
 

@@ -16,10 +16,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var invalidTextLabel: UILabel!
+    var ref: DatabaseReference!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         invalidTextLabel.text = ""
+        ref = Database.database().reference()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -95,6 +98,8 @@ class ViewController: UIViewController {
     
     func saveProfile(){
         print("in save profile")
+        guard let currUser = Auth.auth().currentUser else{return}
+        self.ref.child("users").child(currUser.uid).setValue(["email":(currUser.email)!])
 //        var profileRef:DocumentReference? = nil
 //        profileRef = self.db.collection("users").addDocument(data: [
 //            "email": Auth.auth().currentUser?.email as Any

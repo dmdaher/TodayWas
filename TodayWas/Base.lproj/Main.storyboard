@@ -174,27 +174,43 @@
         <!--Main-->
         <scene sceneID="u2d-Ha-FJv">
             <objects>
-                <viewController storyboardIdentifier="main" id="66e-d3-L9Y" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" id="66e-d3-L9Y" customClass="MainViewController" customModule="TodayWas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ndt-YH-4q9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MAIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEk-UB-0LX">
-                                <rect key="frame" x="166" y="277" width="42" height="21"/>
+                                <rect key="frame" x="166" y="277" width="51" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oee-tp-ZD8">
+                                <rect key="frame" x="12" y="20" width="86" height="30"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logOutUser:" destination="66e-d3-L9Y" eventType="touchUpInside" id="tqB-yd-Ymu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Oee-tp-ZD8" firstAttribute="leading" secondItem="WFi-Zx-825" secondAttribute="leading" constant="12" id="0dX-eQ-jdY"/>
+                            <constraint firstItem="Oee-tp-ZD8" firstAttribute="top" secondItem="WFi-Zx-825" secondAttribute="top" id="3WP-oM-GCh"/>
+                            <constraint firstItem="WFi-Zx-825" firstAttribute="trailing" secondItem="Oee-tp-ZD8" secondAttribute="trailing" constant="277" id="S8i-m1-La3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="WFi-Zx-825"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Main" id="Q7D-rX-eIR"/>
+                    <connections>
+                        <outlet property="logOutButton" destination="Oee-tp-ZD8" id="SF1-Fj-GG8"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="returnToLogin" id="bKL-Zs-3vV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DB7-4v-0ZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2010" y="-379"/>
+            <point key="canvasLocation" x="1990" y="-728"/>
         </scene>
         <!--Tab BarVC-->
         <scene sceneID="HWH-cs-SSe">
@@ -212,7 +228,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cdg-VP-dZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="956" y="133"/>
+            <point key="canvasLocation" x="1058" y="133"/>
         </scene>
     </scenes>
 </document>
