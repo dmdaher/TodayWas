@@ -9,18 +9,23 @@
 import UIKit
 import Firebase
 
-class MainViewController: UIViewController, UINavigationControllerDelegate {
-
-    @IBOutlet weak var logOutButton: UIButton!
-    @IBAction func logOutUser(_ sender: Any) {
-        try! Auth.auth().signOut()
-        
-        self.performSegue(withIdentifier: "returnToLogin", sender: self)
-    }
+class MainViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
+    @IBOutlet weak var detailTextView: UITextView!
+    @IBOutlet weak var feelingLabel: UILabel!
+    
+    let today = Date()
+    let formatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //swipe right gesture
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRight(gesture:)))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        //swipe left gesture
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft(gesture:)))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,6 +41,48 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func swipeRight(gesture: UISwipeGestureRecognizer){
+        
+        let newFeeling = Feeling(isGood: true,comment: detailTextView.text)
+        let todayString = formatter.string(from: today)
+        print("what is the date: \(todayString)")
+        //addToDB(newFeeling)
+    }
+    
+    @objc func swipeLeft(gesture: UISwipeGestureRecognizer){
+        let newFeeling = Feeling(isGood: false,comment: detailTextView.text)
+    }
+    
+    func addToDB(date: String, newFeeling: Feeling){
+        
+    }
+    
+//    func textField(_ textField: UITextField,
+//                   shouldChangeCharactersIn range: NSRange,
+//                   replacementString string: String) -> Bool{
+//        let changedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+//        if string == "\n"{
+//            textField.resignFirstResponder()
+//            return false
+//        }else{
+//            checkIfFieldsAreEmpty(questionText: questionInputLabel.text, answerText: changedString)
+//            return true
+//        }
+//    }
+    
+//    func textView(_ textView: UITextView,
+//                  shouldChangeTextIn affectedCharRange: NSRange,
+//                  replacementText replacementString: String) -> Bool{
+//        let changedString = (textView.text as NSString?)?.replacingCharacters(in: affectedCharRange, with: replacementString) ?? replacementString
+//        if replacementString == "\n" {
+//            textView.resignFirstResponder()
+//            return false
+//        }
+//        else{
+//            checkIfFieldsAreEmpty(questionText: changedString, answerText: answerInputLabel.text!)
+//            return true
+//        }
+//    }
 
     /*
     // MARK: - Navigation

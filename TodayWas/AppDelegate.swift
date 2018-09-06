@@ -17,20 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if Auth.auth().currentUser != nil{
-            let currVC:MainViewController = storyboard.instantiateViewController(withIdentifier: "main") as! MainViewController
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.rootViewController = currVC
-            self.window?.makeKeyAndVisible()
+        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //if Auth.auth().currentUser != nil{
+        //    let currVC:MainViewController = storyboard.instantiateViewController(withIdentifier: "main") as! MainViewController
+        //    self.window = UIWindow(frame: UIScreen.main.bounds)
+        //    self.window?.rootViewController = currVC
+        //    self.window?.makeKeyAndVisible()
             //currVC.present(currVC, animated: false, completion: nil)
-        }
-        else{
-            let currVC:ViewController = storyboard.instantiateViewController(withIdentifier: "loginvc") as! ViewController
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.rootViewController = currVC
-            self.window?.makeKeyAndVisible()
-        }
+        //}
+        //else{
+        //    let currVC:ViewController = storyboard.instantiateViewController(withIdentifier: "loginvc") as! ViewController
+        //    self.window = UIWindow(frame: UIScreen.main.bounds)
+        //    self.window?.rootViewController = currVC
+        //    self.window?.makeKeyAndVisible()
+        //}
         // Override point for customization after application launch.
         return true
     }
